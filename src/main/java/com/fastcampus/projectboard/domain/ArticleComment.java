@@ -53,5 +53,3 @@ public class ArticleComment extends AuditingFields {
         return Objects.hash(this.getId());
     }
 }
-
-
