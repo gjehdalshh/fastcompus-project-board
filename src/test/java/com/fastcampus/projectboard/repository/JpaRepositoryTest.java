@@ -7,11 +7,13 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.context.annotation.Import;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+@Transactional
 @DisplayName("JPA 연결 테스트")
 @Import(JpaConfig.class)
 @DataJpaTest
@@ -36,7 +38,7 @@ class JpaRepositoryTest {
         List<Article> articles = articleRepository.findAll();
 
         // Then
-        assertThat(articles).isNotNull().hasSize(0);
+        assertThat(articles).isNotNull().hasSize(123);
     }
 
     @DisplayName("insert 테스트")
@@ -65,7 +67,7 @@ class JpaRepositoryTest {
         Article savedArticle = articleRepository.saveAndFlush(article);
 
         // Then
-        assertThat(articleRepository).hasFieldOrPropertyWithValue("hashtag", updatedHashtag);
+        assertThat(article).hasFieldOrPropertyWithValue("hashtag", updatedHashtag);
     }
 
     @DisplayName("delete 테스트")
