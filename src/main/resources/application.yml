@@ -15,7 +15,7 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
   jpa:
     defer-datasource-initialization: true
-    hibernate.ddl-auto: update
+    hibernate.ddl-auto: create
     show-sql: true
     properties:
       hibernate.format_sql: true
@@ -25,7 +25,8 @@ spring:
     rest:
       base-path: /api
       detection-strategy: annotated
-
+  thymeleaf3:
+    decoupled-logic: true
 ---
 
 #spring:
